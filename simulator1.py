@@ -2,6 +2,7 @@
 import sys
 import random
 import signal
+from team42 import *
 
 #Timer handler, helper function
 
@@ -520,6 +521,8 @@ if __name__ == '__main__':
 		print '<option> can be 1 => Random player vs. Random player'
 		print '                2 => Human vs. Random Player'
 		print '                3 => Human vs. Human'
+		print '                4 => Random player vs. Team42 a.k.a Player42 a.k.a Revsi'
+		print '                5 => Team42 a.k.a Player42 a.k.a Revsi vs. Random player '
 		sys.exit(1)
  
 	obj1 = ''
@@ -535,11 +538,19 @@ if __name__ == '__main__':
 	elif option == '3':
 		obj1 = Manual_player()
 		obj2 = Manual_player()
-        
-        # Deciding player1 / player2 after a coin toss
-        # However, in the tournament, each player will get a chance to go 1st. 
-        num = random.uniform(0,1)
-        if num > 0.5:
-		simulate(obj2, obj1)
-	else:
-		simulate(obj1, obj2)
+
+	elif option == '4':
+		obj1 = Player1()
+		obj2 = Player42()
+
+	elif option == '5':
+		obj1 = Player42()
+		obj2 = Player1()
+
+		# Deciding player1 / player2 after a coin toss
+		# However, in the tournament, each player will get a chance to go 1st. 
+	#num = random.uniform(0,1)
+	#if num > 0.5:
+	#	simulate(obj2, obj1)
+	#else:
+	simulate(obj1, obj2)
